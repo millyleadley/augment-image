@@ -38,6 +38,6 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: ./app
           file: ./app/Dockerfile
-          target: prods
+          target: prod
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/augmentate:latest
