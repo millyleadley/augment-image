@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
+ENV PYTHONPATH "${PYTHONPATH}:/usr/src/app"
 
 # earlier stage allows us to only partially build the Dockerfile when just testing
 FROM base as test
