@@ -4,6 +4,9 @@ from PIL import Image
 
 
 def test_crop():
+    """
+    Checks that we crop the top and bottom pixels from an image.
+    """
     original = Image.open(DEFAULT_PATH)
     original_width, original_height = original.size
 
