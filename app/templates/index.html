@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Index</title>
 </head>
+
 <body>
+    <header>
+        <h1>You got a {{ augmentation }} {{ object }}!</h1>
+    </header>
     <img src="{{ url_for('static', filename='augmented_image.jpg') }}" alt="User Image">
 </body>
+
 </html>

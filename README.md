@@ -14,7 +14,42 @@ To complete the flask app you will need to do the following:
 
 Put the instructions here on how to set up/run the docker file. It should port-forward the application to run on http://127.0.0.1:8000/.
 
-To send an image and get the app to work open a link as follows:
-http://0.0.0.0:8000/?url=<image_url>
-for example:
+
+
+
+# augment-image
+
+Welcome to `augment-image`! This packages uses a simple Flask app to return some exciting image augmentations.
+
+## Instructions
+
+Create a virtual environment (feel free to use your favourite installer instead of conda) and install the requirements:
+```
+conda create -n augment python=3.9.5
+conda activate augment
+conda install -f requirements.txt
+```
+
+Clone the repo ([instructions](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)) and move to `augment-image/app`. Build the image:
+```
+docker image build -t app .
+```
+
+Create the docker container and start it. Note that `-d` indicates we detatch from the container in the terminal. `-p` indicates publish and maps a port on the Docker host (to the outside world) to a container port.
+```
+docker run -d -p 8000:8000 app
+```
+
+To see a random augmentation of the default image (Milhouse from The Simpsons), head to:
+```
+http://0.0.0.0:8000/
+```
+
+To use your own image, append `?url=<image_url>`, for example:
+```
 http://0.0.0.0:8000/?url=https://imgs.xkcd.com/comics/bad_code.png
+```
+
+
+* Introduced a default image
+* Described the augmentation
