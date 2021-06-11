@@ -1,36 +1,15 @@
-# deployment_interview
-
-Peter (CTO) likes images but loves data augmentation more. He wants a way to see how typical image augmentation in our machine learning affects the images we input to the model. He codes a simple boiler-plate application for you and asks you to finish it off!
-
-To complete the flask app you will need to do the following:
-
-1. Download (Do not fork) the repo, upload to a new repo in your name/account.
-2. Write a dockerfile for amd64 for the app.
-3. Use github actions to build the dockerfile.
-4. Add a image augmentation function image_augmentations.py
-5. Add a test for your function
-6. Improve the repo/python code/deployment in some imaginative way to show-off... Highlight this in the readme.
-7. Send the recycleye team the link to your code.
-
-Put the instructions here on how to set up/run the docker file. It should port-forward the application to run on http://127.0.0.1:8000/.
-
-
-
-
 # augment-image
 
-Welcome to `augment-image`! This packages uses a simple Flask app to return some exciting image augmentations.
+Welcome to `augment-image`! This packages uses a simple Flask app to display some exciting image augmentations.
 
-## Instructions
+## Instructions for use
 
-Clone the repo ([instructions](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)) and move to `augment-image/app`.
-
-Build the image:
+Clone the repo ([instructions](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)) and move to `augment-image/app`. Build the image:
 ```
 docker image build -t app .
 ```
 
-Create the docker container and start it. NB: `-d` indicates we detatch from the container in the terminal. `-p` indicates publish and maps a port on the Docker host (to the outside world) to a container port.
+Create the docker container and start it. NB: `-d` indicates we detatch from the container in the terminal. `-p` indicates "publish" and maps a port on the Docker host to a container port.
 ```
 docker run -d -p 8000:8000 app
 ```
@@ -45,6 +24,16 @@ To use your own image, append `?url=<image_url>`, for example:
 http://0.0.0.0:8000/?url=https://imgs.xkcd.com/comics/bad_code.png
 ```
 
+## Features
 
-* Introduced a default image
-* Described the augmentation
+* Introduced a default image and some text for the webpage
+* Created an (equally exciting) image transformation for cropping
+* Included tests for the cropping function and the flask app response
+* Created a CI workflow that runs the tests and builds an image for every push, and pushes the image to [Docker hub](https://hub.docker.com/repository/docker/millyleadley/augmentate) for master branches
+
+## Future work
+
+I gave more attention to the github actions and docker part of this package as these were relatively new to me, but other stuff I thought would be cool to add:
+* Create a html form for accepting the url, along with buttons for each type of transformation or "randomise"
+* Lots more transformations, this ones in this package are fun: https://github.com/aleju/imgaug
+* Adding a small database to track the images that have been transformed
