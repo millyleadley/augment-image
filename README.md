@@ -23,19 +23,14 @@ Welcome to `augment-image`! This packages uses a simple Flask app to return some
 
 ## Instructions
 
-Create a virtual environment (feel free to use your favourite installer instead of conda) and install the requirements:
-```
-conda create -n augment python=3.9.5
-conda activate augment
-conda install -f requirements.txt
-```
+Clone the repo ([instructions](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)) and move to `augment-image/app`.
 
-Clone the repo ([instructions](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)) and move to `augment-image/app`. Build the image:
+Build the image:
 ```
 docker image build -t app .
 ```
 
-Create the docker container and start it. Note that `-d` indicates we detatch from the container in the terminal. `-p` indicates publish and maps a port on the Docker host (to the outside world) to a container port.
+Create the docker container and start it. NB: `-d` indicates we detatch from the container in the terminal. `-p` indicates publish and maps a port on the Docker host (to the outside world) to a container port.
 ```
 docker run -d -p 8000:8000 app
 ```
